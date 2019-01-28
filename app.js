@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 // var indexRouter = require('./routes/index');
 // var usersRouter = require('./routes/users');
 var studentsRouter = require('./routes/students');
-var expressValidator = require('express-validator')
-
+var expressValidator = require('express-validator');
+var authorizeApp = require('./middleware/Authorize');
 var app = express();
 
 // view engine setup
@@ -18,6 +18,9 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+
+app.use(authorizeApp.authorize);
 
 // CORS issue Fix browser issue
 app.use((req, res, next) => {

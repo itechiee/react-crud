@@ -8,5 +8,6 @@ var studentValidation = require('../validations/Student');
 router.get('/', studentController.getAllStudent);
 router.get('/:id(\\d+)/',  studentController.getStudentById);
 router.post('/', studentValidation.NewStudent, studentController.CreateNewStudent);
-
+router.put('/:id(\\d+)/', studentValidation.UpdateStudent, studentController.UpdateStudent);
+router.delete('/:id(\\d+)/', studentController.DeleteStudent);
 module.exports = router;
